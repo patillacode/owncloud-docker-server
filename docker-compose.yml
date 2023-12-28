@@ -50,7 +50,7 @@ services:
       - MYSQL_DATABASE=owncloud
       - MARIADB_AUTO_UPGRADE=1
       - MARIADB_ROOT_PASSWORD=owncloud
-    command: ["--max-allowed-packet=128M", "--innodb-log-file-size=64M", "--log-bin"]
+    command: ["--max-allowed-packet=128M", "--innodb-log-file-size=64M", "--log-bin=mysqld-bin"]
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-u", "root", "--password=owncloud"]
       interval: 10s
