@@ -38,6 +38,8 @@ services:
       retries: 5
     volumes:
       - files:/mnt/data
+    networks:
+      - owncloud_network
 
   mariadb:
     image: mariadb:10.11 # minimum required ownCloud version is 10.9
@@ -60,6 +62,8 @@ services:
       - mysql:/var/lib/mysql
     ulimits:
       memlock: 262144
+    networks:
+      - owncloud_network
 
   redis:
     image: redis:6
@@ -73,3 +77,8 @@ services:
       retries: 5
     volumes:
       - redis:/data
+    networks:
+      - owncloud_network
+
+networks:
+  owncloud_network:
