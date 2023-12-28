@@ -79,6 +79,8 @@ services:
       - redis:/data
     networks:
       - owncloud_network
+    sysctls:
+      net.core.somaxconn: '511'
 
 networks:
   owncloud_network:
