@@ -1,4 +1,4 @@
-.PHONY: start build clean full-reset help
+.PHONY: start build clean full-reset logs help
 
 start: ## Start all services
 	docker-compose up -d
@@ -13,6 +13,9 @@ full-reset: ## Full reset (clean + remove volumes + start)
 	docker-compose down -v
 	docker-compose rm -vsf
 	docker-compose up --build -d
+
+logs: ## View output from containers
+    docker-compose logs -f
 
 help: ## Display this help
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
